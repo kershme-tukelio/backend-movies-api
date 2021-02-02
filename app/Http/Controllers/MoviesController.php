@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Movie;
+use App\Http\Requests\MovieRequest;
 
 class MoviesController extends Controller
 {
@@ -25,14 +26,9 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
-        $data = $request->validate([
-            'title' => 'required',
-            'director' => 'required',
-            'duration' => 'required|integer|between:1,500',
-            'imageUrl' => 'url',
-        ]);
+        $data = $request->validated();
         $newMovie = Movie::create($data);
 
         return response()->json($newMovie);
