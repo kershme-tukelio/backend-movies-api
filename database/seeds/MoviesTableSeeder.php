@@ -12,11 +12,6 @@ class MoviesTableSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(MoviesTableSeeder::class, 10);
         factory(App\Movie::class, 10)->create();
     }
 }
-
-// ->each(function ($movie) {
-//     $movie->posts()->save(factory(App\Post::class)->make());
-// })
