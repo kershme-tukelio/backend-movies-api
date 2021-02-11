@@ -31,7 +31,7 @@ class AuthController extends Controller
 
         $token = auth('api')->attempt($credentials);
         if (!$token) {
-            return response()->json(['message' => 'Unauthentificated'], 401);
+            return response()->json(['message' => 'Unauthenticated'], 401);
         }
 
         return [
